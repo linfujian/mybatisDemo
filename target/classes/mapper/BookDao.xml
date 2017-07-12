@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="mybatis.demo.dao.BookDao">
+	<select id="queryById" resultType="mybatis.demo.entity.Book" parameterType="long">
+		SELECT
+			id,
+			reader,
+			isbn,
+			title,
+			author,
+			description
+		FROM
+			book
+		WHERE
+			id= #{id}
+	</select>
+	
+	<select id="queryAll" resultType="mybatis.demo.entity.Book">
+		SELECT
+			id,
+			reader,
+			isbn,
+			title,
+			author,
+			description
+		FROM
+			book
+		ORDER BY
+			id
+		LIMIT #{offset}, #{limit}
+	</select>
+</mapper>
